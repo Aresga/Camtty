@@ -4,13 +4,16 @@
 
 Camtty is a fun command-line tool that captures video from your webcam, converts each frame into ASCII characters, and displays the result in real-time in your terminal.
 
-
+![Camtty in Action 1](screenshots/Screenshot%202025-05-01%20at%2021.10.30.png)
 
 ## ✨ Features
 
 *   **Live Webcam Feed:** See the world around you rendered in ASCII.
 *   **Real-time Conversion:** Fast conversion process for a smooth experience.
 *   **Terminal-Based:** Runs entirely within your terminal using libraries like `blessed`.
+*   **Customizable (Future):** (Add potential future features like character set selection, resolution adjustment, etc.)
+
+![Camtty Feature Example](screenshots/Screenshot%202025-05-01%20at%2021.13.52.png)
 
 ## 🚀 Installation
 
@@ -20,6 +23,7 @@ Camtty is a fun command-line tool that captures video from your webcam, converts
     *   A connected webcam recognized by your system.
 
 2.  **Install using pip:**
+    *(Assuming your package is or will be published on PyPI)*
     ```bash
     pip install camtty
     ```
@@ -39,9 +43,9 @@ Simply run the following command in your terminal:
 camtty
 ```
 
-Press `Ctrl+C` or `q` to stop the stream.
+Press `Ctrl+C` to stop the stream.
 
-
+![Camtty Usage Example](screenshots/Screenshot%202025-05-01%20at%2021.15.08.png)
 
 ## 🔧 How it Works
 
