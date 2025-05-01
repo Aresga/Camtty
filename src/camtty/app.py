@@ -2,14 +2,45 @@ from .ascii_converter import ASCIIConverter
 from .camera_handler import CameraHandler
 from .terminal_display import TerminalDisplay
 import sys
+import os
+import cv2
+import datetime
 
 class CamCharApp:
-    def __init__(self, camera_index=0, ascii_chars=" .:-=+*#%@", fps=30):
-        self.converter = ASCIIConverter(ascii_chars)
+    def __init__(self, camera_index=0, ascii_chars=" .:-=+*#%@", fps=30, use_color=False):
+        self.converter = ASCIIConverter(ascii_chars, use_color)
         self.camera = CameraHandler(camera_index)
         self.display = TerminalDisplay()
         self.display.set_fps(fps)
         self.running = False
+        self.current_effect = None
+        self.current_frame = None
+        self.current_ascii = None
+
+    def save_frame(self, path=None):
+        """Save current ASCII frame to a file"""
+        if self.current_ascii is None:
+            return False
+            
+        if path is None:
+            # Generate filename with timestamp
+            timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
+            path = f"ascii_frame_{timestamp}.txt"
+        
+        try:
+            with open(path, 'w') as f:
+                f.write(self.current_ascii)
+            return True
+        except Exception as e:
+            print(f"Error saving frame: {e}")
+            return False
+
+    def set_effect(self, effect):
+        """Set current effect (None, 'invert', 'mirror', 'rotate')"""
+        if effect in (None, 'invert', 'mirror', 'rotate'):
+            self.current_effect = effect
+            return True
+        return False
 
     def start(self):
         """Start the ASCII webcam feed"""
@@ -25,13 +56,18 @@ class CamCharApp:
                     break
 
                 # Capture and convert frame
-                frame = self.camera.get_frame()
-                if frame is None:
+                self.current_frame = self.camera.get_frame()
+                if self.current_frame is None:
                     break
                 
                 # Convert to ASCII and display
-                ascii_frame = self.converter.frame_to_ascii(frame, width, height)
-                self.display.display_frame(ascii_frame)
+                self.current_ascii = self.converter.frame_to_ascii(
+                    self.current_frame, 
+                    width, 
+                    height,
+                    self.current_effect
+                )
+                self.display.display_frame(self.current_ascii)
 
         except KeyboardInterrupt:
             pass

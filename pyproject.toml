@@ -10,19 +10,20 @@ authors = [
     {name = "Abderrahman Gaga", email = "agaga@student.hive.fi"},
 ]
 keywords = [
-	"webcam",
-	"ascii-art",
-	"terminal",
-	"cli",
-	"video",
-	"camera",
-	"ascii",
-	"tty"
+    "webcam",
+    "ascii-art",
+    "terminal",
+    "cli",
+    "video",
+    "camera",
+    "ascii",
+    "tty"
 ]
 requires-python = ">=3.7"
 dependencies = [
     "opencv-python",
     "numpy",
+    "blessed",
 ]
 
 [project.scripts]
