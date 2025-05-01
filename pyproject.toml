@@ -1,11 +1,12 @@
 [build-system]
-requires = ["setuptools>=45", "setuptools-scm[toml]>=6.2"]
+requires = ["setuptools>=61.0", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
 name = "camtty"
 version = "0.1.0"
 description = "A CLI tool to display webcam feed as ASCII art in the terminal"
+readme = "README.md"
 authors = [
     {name = "Abderrahman Gaga", email = "agaga@student.hive.fi"},
 ]
@@ -25,7 +26,19 @@ dependencies = [
     "numpy",
     "blessed",
 ]
-
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Intended Audience :: End Users/Desktop",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Operating System :: OS Independent",
+]
 [project.scripts]
 camtty = "camtty.cam_to_ascii:main"
 

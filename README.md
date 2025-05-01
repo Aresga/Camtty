@@ -30,8 +30,8 @@ Camtty is a fun command-line tool that captures video from your webcam, converts
     *Alternatively, for local development:*
     ```bash
     # Clone the repository (if you haven't already)
-    # git clone <your-repo-url>
-    # cd camchar
+    # git clone https://github.com/Aresga/Camtty.git
+    # cd camtty
     pip install .
     ```
 
@@ -68,8 +68,6 @@ Contributions are welcome! Please feel free to open an issue or submit a pull re
 
 ## 📄 License
 
-This project is licensed under the [LICENSE_NAME] License - see the [LICENSE](LICENSE) file for details.
-
----
+see the [LICENSE](LICENSE) file for details.
 
 
