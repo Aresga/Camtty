@@ -8,7 +8,7 @@ class ASCIIConverter:
         self._generate_ascii_map()
 
     def _generate_ascii_map(self):
-        """Precompute ASCII mappings for better performance"""
+        """Precompute ASCII mappings for gd performance """
         self.ascii_map = [self.ascii_chars[int(i / 256 * len(self.ascii_chars))] 
                          for i in range(256)]
 

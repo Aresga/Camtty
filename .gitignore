@@ -408,3 +408,4 @@ build/
 *.pdb
 *.pdbx
 *.pdbx.xml
+.venv

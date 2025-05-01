@@ -70,12 +70,11 @@ def handle_input(app, args):
 
 def main():
     args = parse_args()
-
     # Determine ASCII chars based on style and chars arguments
     if args.style != 'default':
         # If a specific style (not default) is chosen, use its characters
         ascii_chars = STYLE_CHARS.get(args.style)
-        # Fallback in case of unexpected invalid style (argparse should prevent this)
+        # Fallback in case of unexpected invalid style (argparse should prevent this
         if ascii_chars is None:
             print(f"Warning: Invalid style '{args.style}' specified. Falling back to --chars value.", file=sys.stderr)
             ascii_chars = args.chars
@@ -83,9 +82,6 @@ def main():
         # If style is default, use the value from --chars 
         # (this will be the user's value if provided, otherwise the default chars)
         ascii_chars = args.chars
-
-    # No need to store original terminal settings manually
-    # original_term_settings = termios.tcgetattr(sys.stdin.fileno())
 
     app = CamCharApp(
         camera_index=args.camera,
@@ -128,12 +124,10 @@ def main():
                  app.running = False
             if input_thread.is_alive():
                 input_thread.join(timeout=1.0) # Wait for input thread to finish
-
             # Blessed context managers should restore terminal state, py 
             # including cursor visibility and cbreak mode.
             # Explicitly ensure cursor is visible and print exit message at bottom.
             print(term.normal_cursor + term.move_down(term.height -1) + term.clear_eol + "\rExiting application.\n")
-
 
 if __name__ == "__main__":
     main()
